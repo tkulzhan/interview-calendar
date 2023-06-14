@@ -4,7 +4,7 @@ import Day from "./components/Calendar/Day";
 import Header from "./components/Header";
 import Month from "./components/Calendar/Month";
 import arrow from "./assets/arrow.png";
-import Row from "./components/Schedule/Row";
+import { Row, FirstRow, LastRow } from "./components/Schedule/Row";
 
 const days = [
   { weekDay: "M", monthDay: 25 },
@@ -17,31 +17,30 @@ const days = [
 ];
 
 const schedules = [
-  [true, true, false, true, true, true, false, false],
-  [false, false, true, true, true, false, true, true],
-  [false, false, true, false, true, true, true, true],
-  [true, true, true, true, false, true, false, false],
-  [false, false, true, true, true, true, false, true],
-  [true, true, true, true, true, false, false, false],
-  [false, false, false, true, true, true, true, true],
-  [false, true, false, false, true, true, true, true],
-  [true, true, true, false, false, true, false, true],
-  [false, true, true, false, false, true, true, true],
-  [false, true, true, true, true, true, false, false],
-  [true, true, true, false, true, true, false, false],
-  [true, true, true, true, false, false, false, true],
-  [true, true, true, false, true, false, true, false],
-  [false, true, true, true, true, false, false, false],
-  [true, false, true, true, true, false, false, true],
-  [true, false, false, true, false, true, true, true],
-  [true, false, true, false, true, true, true, true],
-  [false, false, true, true, true, true, true, false],
-  [false, true, true, false, true, true, false, true],
-  [true, true, true, false, true, false, true, false],
-  [false, true, true, false, true, true, true, true],
-  [false, false, true, true, false, true, true, true],
-  [true, true, false, true, false, false, true, true],
-  [false, true, false, true, true, false, true, true],
+  { time: "00:00", ocupied: [true, true, false, true, true, true, false] },
+  { time: "01:00", ocupied: [false, false, true, true, true, false, true] },
+  { time: "02:00", ocupied: [false, false, true, false, true, true, true] },
+  { time: "03:00", ocupied: [true, true, true, true, false, true, false] },
+  { time: "04:00", ocupied: [false, false, true, true, true, true, false] },
+  { time: "05:00", ocupied: [true, true, true, true, true, false, false] },
+  { time: "06:00", ocupied: [false, false, false, true, true, true, true] },
+  { time: "07:00", ocupied: [false, true, false, false, true, true, true] },
+  { time: "08:00", ocupied: [true, true, true, false, false, true, false] },
+  { time: "09:00", ocupied: [false, true, true, false, false, true, true] },
+  { time: "10:00", ocupied: [false, true, true, true, true, true, false] },
+  { time: "11:00", ocupied: [true, true, true, false, true, true, false] },
+  { time: "12:00", ocupied: [true, true, true, true, false, false, false] },
+  { time: "13:00", ocupied: [true, true, true, false, true, false, true] },
+  { time: "14:00", ocupied: [false, true, true, true, true, false, false] },
+  { time: "15:00", ocupied: [true, false, true, true, true, false, false] },
+  { time: "16:00", ocupied: [true, false, false, true, false, true, true] },
+  { time: "17:00", ocupied: [true, false, true, false, true, true, true] },
+  { time: "18:00", ocupied: [false, false, true, true, true, true, true] },
+  { time: "19:00", ocupied: [false, true, true, false, true, true, false] },
+  { time: "20:00", ocupied: [true, true, true, false, true, false, true] },
+  { time: "21:00", ocupied: [false, true, true, false, true, true, true] },
+  { time: "22:00", ocupied: [false, false, true, true, false, true, true] },
+  { time: "23:00", ocupied: [true, true, false, true, false, false, true] },
 ];
 
 function App() {
@@ -65,9 +64,13 @@ function App() {
           <img src={arrow} alt="Next" width={34} style={{ rotate: "180deg" }} />
         </Month>
       </Calendar>
-      {schedules.map((schedule, i) => {
-        return <Row key={i} schedule={schedule} />;
-      })}
+      <div style={{ marginTop: 20 }}>
+        <FirstRow key={0} schedule={schedules[0]} />
+        {schedules.slice(1).map((schedule, i) => {
+          return <Row key={i} schedule={schedule} />;
+        })}
+        <LastRow />
+      </div>
     </div>
   );
 }

@@ -48,27 +48,36 @@ function App() {
   return (
     <div className="app">
       <Header>
-        <h1>Interview Calendar</h1>
-        <AddBtn
-          onClick={() => {
-            prompt("Enter event time:\nYYYY-MM-DD HH:mm:ss");
-          }}
-        >
-          <span>+</span>
-        </AddBtn>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <h1>Interview Calendar</h1>
+          <AddBtn
+            onClick={() => {
+              prompt("Enter event time:\nYYYY-MM-DD HH:mm:ss");
+            }}
+          >
+            <span>+</span>
+          </AddBtn>
+        </div>
+
+        <Calendar>
+          <Day></Day>
+          {days.map((day, i) => {
+            return <Day key={i} day={day} />;
+          })}
+          <Day></Day>
+          <Month>
+            <img src={arrow} alt="Previous" width={34} />
+            <h3>March 2019</h3>
+            <img
+              src={arrow}
+              alt="Next"
+              width={34}
+              style={{ rotate: "180deg" }}
+            />
+          </Month>
+        </Calendar>
       </Header>
-      <Calendar>
-        <Day></Day>
-        {days.map((day, i) => {
-          return <Day key={i} day={day} />;
-        })}
-        <Day></Day>
-        <Month>
-          <img src={arrow} alt="Previous" width={34} />
-          <h3>March 2019</h3>
-          <img src={arrow} alt="Next" width={34} style={{ rotate: "180deg" }} />
-        </Month>
-      </Calendar>
+      <div style={{ padding: 140 }}></div>
       <div style={{ marginTop: 20 }}>
         <FirstRow key={0} schedule={schedules[0]} />
         {schedules.slice(1).map((schedule, i) => {
@@ -76,6 +85,7 @@ function App() {
         })}
         <LastRow />
       </div>
+      <div style={{ padding: 20 }}></div>
       <Footer />
     </div>
   );

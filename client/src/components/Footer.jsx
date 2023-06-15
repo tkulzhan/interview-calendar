@@ -5,10 +5,12 @@ const FooterLink = styled.a`
   color: #ff3434;
   font-size: 28px;
   padding-left: 40px;
+  padding-right: 40px;
 
   @media screen and (max-width: 768px) {
     font-size: 20px;
     padding-left: 20px;
+    padding-right: 20px;
   }
 `;
 

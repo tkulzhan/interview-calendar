@@ -40,11 +40,6 @@ footer {
   justify-content: space-between;
 }
 
-.row {
-  display: flex;
-  font-family: Helvetica, sans-serif;
-}
-
 .row-pad {
   @media screen and (max-width: 768px) {
     padding: 110px;
@@ -55,10 +50,24 @@ footer {
   @media screen and (max-width: 375px) {
     padding: 100px;
   }
+  @media screen and (max-height: 609px) {
+    padding: 0px;
+  }
+}
+
+@media screen and (max-height: 609px) {
+  header {
+    position: relative;
+  }
 }
 
 .active {
   background-color: #b8b4fc !important;
+}
+
+.row {
+  display: flex;
+  font-family: Helvetica, sans-serif;
 }
 
 @font-face {

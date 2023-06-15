@@ -6,6 +6,7 @@ import Month from "./components/Calendar/Month";
 import arrow from "./assets/arrow.png";
 import { Row, FirstRow, LastRow } from "./components/Schedule/Row";
 import Footer from "./components/Footer";
+import { useState } from "react";
 
 const days = [
   { weekDay: "M", monthDay: 25 },
@@ -45,6 +46,15 @@ const schedules = [
 ];
 
 function App() {
+  const [isDelete, setIsDelete] = useState(false);
+  const handleClick = (ocupied, target) => {
+    if (target.classList.contains("active")) {
+      setIsDelete(ocupied);
+    } else {
+      setIsDelete(false)
+    }
+    
+  };
   return (
     <div className="app">
       <Header>
@@ -77,16 +87,16 @@ function App() {
           </Month>
         </Calendar>
       </Header>
-      <div style={{ padding: "calc()" }}></div>
+      <div className="r"></div>
       <div style={{ marginTop: 20 }}>
-        <FirstRow key={0} schedule={schedules[0]} />
+        <FirstRow handleClick={handleClick} key={0} schedule={schedules[0]} />
         {schedules.slice(1).map((schedule, i) => {
-          return <Row key={i} schedule={schedule} />;
+          return <Row handleClick={handleClick} key={i} schedule={schedule} />;
         })}
         <LastRow />
       </div>
-      <div style={{ padding: 20 }}></div>
-      <Footer />
+      <div style={{ padding: 15 }}></div>
+      <Footer isDelete={isDelete} />
     </div>
   );
 }

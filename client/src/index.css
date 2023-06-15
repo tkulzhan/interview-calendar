@@ -37,11 +37,28 @@ footer {
   padding: 24px 0px;
   position: fixed;
   display: flex;
+  justify-content: space-between;
 }
 
 .row {
   display: flex;
   font-family: Helvetica, sans-serif;
+}
+
+.r {
+  @media screen and (max-width: 768px) {
+    padding: 110px;
+  }
+  @media screen and (min-width: 769px) {
+    padding: 130px;
+  }
+  @media screen and (max-width: 350px) {
+    padding: 105px;
+  }
+}
+
+.active {
+  background-color: #b8b4fc !important;
 }
 
 @font-face {

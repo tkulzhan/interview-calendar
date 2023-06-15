@@ -4,9 +4,9 @@ const Month = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: Helvetica, sans-serif;
+  box-sizing: border-box;
   padding: 0% 5%;
-  width: 77.5%;
+  width: 87.5%;
 
   h3 {
     font-size: 25px;

@@ -8,15 +8,34 @@ import { Row, FirstRow, LastRow } from "./components/Schedule/Row";
 import Footer from "./components/Footer";
 import { useState } from "react";
 
-const days = [
-  { weekDay: "M", monthDay: 25 },
-  { weekDay: "T", monthDay: 26 },
-  { weekDay: "W", monthDay: 27 },
-  { weekDay: "T", monthDay: 28 },
-  { weekDay: "F", monthDay: 29 },
-  { weekDay: "S", monthDay: 30 },
-  { weekDay: "S", monthDay: 31 },
-];
+const currentDate = new Date();
+
+let currentDay = currentDate.getDay();
+
+if (currentDay === 0) {
+  currentDay = 6;
+} else {
+  currentDay -= 1;
+}
+
+const startDate = new Date(currentDate);
+startDate.setDate(currentDate.getDate() - currentDay);
+
+const endDate = new Date(currentDate);
+endDate.setDate(currentDate.getDate() + (6 - currentDay));
+
+const days = [];
+const weekdays = ["M", "T", "W", "T", "F", "S", "S"];
+
+for (let i = 0; i < 7; i++) {
+  const date = new Date(startDate);
+  date.setDate(startDate.getDate() + i);
+
+  const weekDay = weekdays[i];
+  const monthDay = date.getDate();
+
+  days.push({ weekDay, monthDay });
+}
 
 const schedules = [
   { time: "00:00", ocupied: [true, true, false, true, true, true, false] },
@@ -51,9 +70,8 @@ function App() {
     if (target.classList.contains("active")) {
       setIsDelete(ocupied);
     } else {
-      setIsDelete(false)
+      setIsDelete(false);
     }
-    
   };
   return (
     <div className="app">
@@ -77,7 +95,11 @@ function App() {
           <Day></Day>
           <Month>
             <img src={arrow} alt="Previous" width={32} />
-            <h3>March 2019</h3>
+            <h3>
+              {`${currentDate.toLocaleString("en-US", {
+                month: "long",
+              })} ${currentDate.getFullYear()}`}
+            </h3>
             <img
               src={arrow}
               alt="Next"
@@ -87,7 +109,7 @@ function App() {
           </Month>
         </Calendar>
       </Header>
-      <div className="r"></div>
+      <div className="row-pad"></div>
       <div style={{ marginTop: 20 }}>
         <FirstRow handleClick={handleClick} key={0} schedule={schedules[0]} />
         {schedules.slice(1).map((schedule, i) => {
@@ -95,7 +117,7 @@ function App() {
         })}
         <LastRow />
       </div>
-      <div style={{ padding: 15 }}></div>
+      <div style={{ padding: 18 }}></div>
       <Footer isDelete={isDelete} />
     </div>
   );

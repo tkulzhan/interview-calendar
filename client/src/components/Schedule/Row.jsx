@@ -72,8 +72,7 @@ const LastRowCell = styled(HourCell)`
   border-top: 1px solid #e1e1e1;
 `;
 
-const setActive = (event) => {
-  const target = event.target;
+const setActive = (target) => {
   const isActive = target.classList.contains("active");
   const innerCells = document.querySelectorAll(".inner-cell");
   innerCells.forEach((cell) => {
@@ -97,7 +96,7 @@ const FirstRow = ({ schedule, handleClick }) => {
           className="inner-cell"
           colored={schedule.ocupied[0]}
           onClick={(evt) => {
-            setActive(evt);
+            setActive(evt.target);
             handleClick(schedule.ocupied[0], evt.target);
           }}
         />
@@ -109,7 +108,7 @@ const FirstRow = ({ schedule, handleClick }) => {
               className="inner-cell"
               colored={ocupied}
               onClick={(evt) => {
-                setActive(evt);
+                setActive(evt.target);
                 handleClick(ocupied, evt.target);
               }}
             />
@@ -121,7 +120,7 @@ const FirstRow = ({ schedule, handleClick }) => {
           className="inner-cell"
           colored={schedule.ocupied[6]}
           onClick={(evt) => {
-            setActive(evt);
+            setActive(evt.target);
             handleClick(schedule.ocupied[6], evt.target);
           }}
         />
@@ -141,7 +140,7 @@ const Row = ({ schedule, handleClick }) => {
           className="inner-cell"
           colored={schedule.ocupied[0]}
           onClick={(evt) => {
-            setActive(evt);
+            setActive(evt.target);
             handleClick(schedule.ocupied[0], evt.target);
           }}
         />
@@ -153,7 +152,7 @@ const Row = ({ schedule, handleClick }) => {
               className="inner-cell"
               colored={ocupied}
               onClick={(evt) => {
-                setActive(evt);
+                setActive(evt.target);
                 handleClick(ocupied, evt.target);
               }}
             />
@@ -165,7 +164,7 @@ const Row = ({ schedule, handleClick }) => {
           className="inner-cell"
           colored={schedule.ocupied[6]}
           onClick={(evt) => {
-            setActive(evt);
+            setActive(evt.target);
             handleClick(schedule.ocupied[6], evt.target);
           }}
         />

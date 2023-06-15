@@ -14,7 +14,6 @@ const Cell = styled.div`
     margin: 0% 0%;
     margin-top: -12px;
     font-size: 24px;
-    font-family: Helvetica, sans-serif;
   }
 `;
 
@@ -54,32 +53,41 @@ const LastRowCell = styled(HourCell)`
   border-top: 1px solid #e1e1e1;
 `;
 
+const handleClick = (ocupied) => {};
+
 const FirstRow = ({ schedule }) => {
   return (
-    <div style={{ display: "flex" }}>
+    <div className="row">
       <Cell>
         <p>{schedule.time}</p>
       </Cell>
       <FirstRowFirstCell>
-        <InnerCell colored={schedule.ocupied[0]} />
+        <InnerCell
+          colored={schedule.ocupied[0]}
+          onClick={() => {
+            handleClick(schedule.ocupied[0]);
+          }}
+        />
       </FirstRowFirstCell>
-      <FirstRowCell>
-        <InnerCell colored={schedule.ocupied[1]} />
-      </FirstRowCell>
-      <FirstRowCell>
-        <InnerCell colored={schedule.ocupied[2]} />
-      </FirstRowCell>
-      <FirstRowCell>
-        <InnerCell colored={schedule.ocupied[3]} />
-      </FirstRowCell>
-      <FirstRowCell>
-        <InnerCell colored={schedule.ocupied[4]} />
-      </FirstRowCell>
-      <FirstRowCell>
-        <InnerCell colored={schedule.ocupied[5]} />
-      </FirstRowCell>
+      {schedule.ocupied.slice(1, 6).map((ocupied, i) => {
+        return (
+          <FirstRowCell key={i}>
+            <InnerCell
+              colored={ocupied}
+              onClick={() => {
+                handleClick(ocupied);
+              }}
+            />
+          </FirstRowCell>
+        );
+      })}
       <FirstRowLastCell>
-        <InnerCell colored={schedule.ocupied[6]} />
+        <InnerCell
+          colored={schedule.ocupied[6]}
+          onClick={() => {
+            handleClick(schedule.ocupied[6]);
+          }}
+        />
       </FirstRowLastCell>
     </div>
   );
@@ -87,30 +95,37 @@ const FirstRow = ({ schedule }) => {
 
 const Row = ({ schedule }) => {
   return (
-    <div style={{ display: "flex" }}>
+    <div className="row">
       <Cell>
         <p>{schedule.time}</p>
       </Cell>
       <FirstCell>
-        <InnerCell colored={schedule.ocupied[0]} />
+        <InnerCell
+          colored={schedule.ocupied[0]}
+          onClick={() => {
+            handleClick(schedule.ocupied[0]);
+          }}
+        />
       </FirstCell>
-      <HourCell>
-        <InnerCell colored={schedule.ocupied[1]} />
-      </HourCell>
-      <HourCell>
-        <InnerCell colored={schedule.ocupied[2]} />
-      </HourCell>
-      <HourCell>
-        <InnerCell colored={schedule.ocupied[3]} />
-      </HourCell>
-      <HourCell>
-        <InnerCell colored={schedule.ocupied[4]} />
-      </HourCell>
-      <HourCell>
-        <InnerCell colored={schedule.ocupied[5]} />
-      </HourCell>
+      {schedule.ocupied.slice(1, 6).map((ocupied, i) => {
+        return (
+          <HourCell key={i}>
+            <InnerCell
+              colored={ocupied}
+              onClick={() => {
+                handleClick(ocupied);
+              }}
+            />
+          </HourCell>
+        );
+      })}
       <LastCell>
-        <InnerCell colored={schedule.ocupied[6]} />
+        <InnerCell
+          colored={schedule.ocupied[6]}
+          onClick={() => {
+            handleClick(schedule.ocupied[6]);
+          }}
+        />
       </LastCell>
     </div>
   );
@@ -118,7 +133,7 @@ const Row = ({ schedule }) => {
 
 const LastRow = () => {
   return (
-    <div style={{ display: "flex" }}>
+    <div className="row">
       <Cell>
         <p>00:00</p>
       </Cell>

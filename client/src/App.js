@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Month from "./components/Calendar/Month";
 import arrow from "./assets/arrow.png";
 import { Row, FirstRow, LastRow } from "./components/Schedule/Row";
+import Footer from "./components/Footer";
 
 const days = [
   { weekDay: "M", monthDay: 25 },
@@ -48,7 +49,11 @@ function App() {
     <div className="app">
       <Header>
         <h1>Interview Calendar</h1>
-        <AddBtn>
+        <AddBtn
+          onClick={() => {
+            prompt("Enter event time:\nYYYY-MM-DD HH:mm:ss");
+          }}
+        >
           <span>+</span>
         </AddBtn>
       </Header>
@@ -71,6 +76,7 @@ function App() {
         })}
         <LastRow />
       </div>
+      <Footer />
     </div>
   );
 }

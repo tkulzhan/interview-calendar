@@ -6,7 +6,6 @@ const Calendar = styled.section`
   flex-wrap: wrap;
   border-top: 2px solid #e1e1e1;
   border-bottom: 2px solid #e1e1e1;
-  font-family: Helvetica, sans-serif;
 `;
 
 export default Calendar;

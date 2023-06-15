@@ -110,13 +110,13 @@ function App() {
         </Calendar>
       </Header>
       <div className="row-pad"></div>
-      <div style={{ marginTop: 20 }}>
+      <main style={{ marginTop: 20 }}>
         <FirstRow handleClick={handleClick} key={0} schedule={schedules[0]} />
         {schedules.slice(1).map((schedule, i) => {
           return <Row handleClick={handleClick} key={i} schedule={schedule} />;
         })}
         <LastRow />
-      </div>
+      </main>
       <div style={{ padding: 18 }}></div>
       <Footer isDelete={isDelete} />
     </div>

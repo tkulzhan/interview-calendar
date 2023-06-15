@@ -15,6 +15,25 @@ const Cell = styled.div`
     margin-top: -12px;
     font-size: 24px;
   }
+
+  @media screen and (max-width: 768px) {
+    p {
+      font-size: 18px;
+      margin-top: -9px;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    height: 50px;
+  }
+
+  @media screen and (max-width: 350px) {
+    height: 40px;
+    p {
+      font-size: 16px;
+      margin-top: -8px;
+    }
+  }
 `;
 
 const HourCell = styled(Cell)`

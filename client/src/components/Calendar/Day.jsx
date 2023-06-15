@@ -14,12 +14,25 @@ const WeekDay = styled.p`
   font-size: 16px;
   margin-bottom: 20px;
   margin-top: 5px;
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 375px) {
+    font-size: 4vw;
+  }
 `;
 
 const MonthDay = styled.p`
   font-size: 28px;
   margin: 0% 0%;
   font-weight: 400;
+
+  @media screen and (max-width: 768px) {
+    font-size: 20px;
+  }
+  @media screen and (max-width: 375px) {
+    font-size: 4.5vw;
+  }
 `;
 
 const Day = ({ day }) => {

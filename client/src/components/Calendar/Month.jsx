@@ -13,6 +13,24 @@ const Month = styled.div`
     font-weight: 400;
     margin: 0% 0%;
   }
+
+  @media screen and (max-width: 768px) {
+    h3 {
+      font-size: 20px;
+    }
+    img {
+      width: 28px;
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+    h3 {
+      font-size: 18px;
+    }
+    img {
+      width: 24px;
+    }
+  }
 `;
 
 export default Month;

@@ -66,7 +66,7 @@ function App() {
           })}
           <Day></Day>
           <Month>
-            <img src={arrow} alt="Previous" width={34} />
+            <img src={arrow} alt="Previous" width={32} />
             <h3>March 2019</h3>
             <img
               src={arrow}
@@ -77,7 +77,7 @@ function App() {
           </Month>
         </Calendar>
       </Header>
-      <div style={{ padding: 140 }}></div>
+      <div style={{ padding: "calc()" }}></div>
       <div style={{ marginTop: 20 }}>
         <FirstRow key={0} schedule={schedules[0]} />
         {schedules.slice(1).map((schedule, i) => {

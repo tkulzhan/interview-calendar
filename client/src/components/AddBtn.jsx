@@ -7,6 +7,11 @@ const AddBtn = styled.button`
     color: #ff3434;
     font-size: 48px;
   }
+  @media screen and (max-width: 768px) {
+    span {
+      font-size: 36px;
+    }
+  }
 `;
 
 export default AddBtn;
